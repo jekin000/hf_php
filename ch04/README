@@ -1,0 +1,12 @@
+The ch04's requestment:
+
+1. Update the sendemail.php/html as
+    1) check valid for subject & text;
+    2) if it is empty, then notify user to re-enter information to form;
+    3) The notify form must have information entered before.
+
+2. Delete Email.
+    Because the input data, there will be two rows with same email, so you must give solution.
+    1) alter table with id
+    2) show removeemail page with email list
+    3) update removeemail.php
