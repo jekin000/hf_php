@@ -1,0 +1,4 @@
+In this chapter , there are 3 seperated html/php
+addemail.php/html,   you can add first_name,last_name,email to database.
+sendemail.php/html,  you can send (subject,text) to each email address stored in database.
+removeemail.php/html,you can delete email by email address.
