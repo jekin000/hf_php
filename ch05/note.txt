@@ -13,3 +13,15 @@
             a> MODIFY COLUMN date DATETIME AFTER age
             b> MODIFY COLUMN date DATETIME FIRST
 
+2. Use input tag to upload file.
+    #tell form use secial type to encoding file.
+  <form enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
+    #define the MAX_FILE_SIZE
+    <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
+
+    #input field
+    <input type="file" id="screenshot" name="screenshot" />
+
+3. Database can store a image file
+    the type is VARCHAR(64)
