@@ -1,0 +1,15 @@
+1) if statement
+    isset()
+    empty()
+
+2) self-referencing
+    A PHP script which have the HTML code.
+
+3) Sticky forms
+    the form which remember the data the user has already correctly entered.
+    The PHP support the sticky forms by $_SERVER['PHP_SELF'].
+    You can embed this to a HTML sentense.
+    e.g.
+        before: <form action="sendemail.php" method="post"> 
+        after:  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+
