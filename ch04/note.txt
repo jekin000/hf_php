@@ -12,4 +12,19 @@
     e.g.
         before: <form action="sendemail.php" method="post"> 
         after:  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+4) Add a column to tables
+   ALTER TABLE email_list ADD id INT NOT NULL AUTO_INCREMENT FIRST,ADD PRIMARY KEY (id)
+
+
+5) use checkbox to print tables rows and perform check to tables.
+    fake code:
+        $query = select from db.
+        $result = mysqli_query($dbc,$query)
+        while ($row = mysqli_fetch_array($result))
+            echo '<input type="checkbox" value="'.$row['id'].'" name="todelete[]" />';
+            echo 'some other thing.';
+    
+    the todelete[] store the rows which use selected.
+
+6) foreach()
 
