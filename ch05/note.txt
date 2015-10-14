@@ -1,0 +1,15 @@
+1. ALTER TABLE
+    1.1) ADD COLUMN
+    1.2) DROP CLOUMN
+    1.3) CHANGE COLUMN
+        change column name and type
+        e.g.
+            CHANGE COLUMN score high_score INT
+    1.4) MODIFY COLUMN
+        change a datatype or the position in table.
+        exact position, pls use FIRST
+        relative position, pls use AFTER
+        e.g.
+            a> MODIFY COLUMN date DATETIME AFTER age
+            b> MODIFY COLUMN date DATETIME FIRST
+
