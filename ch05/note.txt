@@ -23,5 +23,3 @@
     #input field
     <input type="file" id="screenshot" name="screenshot" />
 
-3. Database can store a image file
-    the type is VARCHAR(64)
