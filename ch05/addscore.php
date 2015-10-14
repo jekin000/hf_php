@@ -17,7 +17,7 @@
 
     if (!empty($name) && !empty($score)) {
       // Connect to the database
-      $dbc = mysqli_connect('www.guitarwars.net', 'admin', 'rockit', 'gwdb');
+      $dbc = mysqli_connect('localhost', 'root', 'root', 'guitarwars');
 
       // Write the data to the database
       $query = "INSERT INTO guitarwars VALUES (0, NOW(), '$name', '$score')";
