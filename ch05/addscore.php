@@ -10,31 +10,37 @@
   <h2>Guitar Wars - Add Your High Score</h2>
 
 <?php
+  define('GW_UPLOADPATH','images/');
+
   if (isset($_POST['submit'])) {
     // Grab the score data from the POST
     $name = $_POST['name'];
     $score = $_POST['score'];
     $screenshot = $_FILES['screenshot']['name'];
 
-    if (!empty($name) && !empty($score)) {
-      // Connect to the database
-      $dbc = mysqli_connect('localhost', 'root', 'root', 'guitarwars');
+    if (!empty($name) && !empty($score) && !empty($screenshot)) {
+        $target = GW_UPLOADPATH.$screenshot;
+        if (move_uploaded_file($_FILES['screenshot']['tmp_name'],$target)){ 
+            // Connect to the database
+            $dbc = mysqli_connect('localhost', 'root', 'root', 'guitarwars');
 
-      // Write the data to the database
-      $query = "INSERT INTO guitarwars (id,date,name,score,screenshot) VALUES (0, NOW(), '$name', '$score','$screenshot')";
-      mysqli_query($dbc, $query)
-        or die('Can not insert to database.');
-      // Confirm success with the user
-      echo '<p>Thanks for adding your new high score!</p>';
-      echo '<p><strong>Name:</strong> ' . $name . '<br />';
-      echo '<strong>Score:</strong> ' . $score . '</p>';
-      echo '<p><a href="index.php">&lt;&lt; Back to high scores</a></p>';
+            // Write the data to the database
+            $query = "INSERT INTO guitarwars (id,date,name,score,screenshot) VALUES (0, NOW(), '$name', '$score','$screenshot')";
+            mysqli_query($dbc, $query)
+                or die('Can not insert to database.');
+            // Confirm success with the user
+            echo '<p>Thanks for adding your new high score!</p>';
+            echo '<p><strong>Name:</strong> ' . $name . '<br />';
+            echo '<strong>Score:</strong> ' . $score . '</p>';
+            echo '<img src="' .GW_UPLOADPATH.$screenshot. '" alt="Score image" /></p>';
+            echo '<p><a href="index.php">&lt;&lt; Back to high scores</a></p>';
 
-      // Clear the score data to clear the form
-      $name = "";
-      $score = "";
+            // Clear the score data to clear the form
+            $name = "";
+            $score = "";
 
-      mysqli_close($dbc);
+            mysqli_close($dbc);
+        }
     }
     else {
       echo '<p class="error">Please enter all of the information to add your high score.</p>';

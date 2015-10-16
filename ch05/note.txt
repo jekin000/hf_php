@@ -38,4 +38,15 @@
         $_FILES['screenshot']['size'] #12244
         $_FILES['screenshot']['tmp_name'] #/tmp/phpE7qJky
         $_FILES['screenshot']['error'] #0
+
+6.[sql] NOW()
+
+7.move upload file from tmp to self-define place
+    move_uploaded_file($_FILES['filename']['tmp_name'],'self-place')
+    NOTICE, this may caused authority problem, please check SELinux.
+
+9.php define
+    define('MACRO','mm')
+
+
         

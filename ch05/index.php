@@ -12,6 +12,8 @@
   <hr />
 
 <?php
+  define('GW_UPLOADPATH','images/');
+  
   // Connect to the database 
   $dbc = mysqli_connect('localhost', 'root', 'root', 'guitarwars')
     or die('Can not connect database.');
@@ -29,11 +31,11 @@
     echo '<span class="score">' . $row['score'] . '</span><br />';
     echo '<strong>Name:</strong> ' . $row['name'] . '<br />';
     echo '<strong>Date:</strong> ' . $row['date'] . '</td></tr>';
-    if (is_file($row['screenshot']) && filesize($row['screenshot'])>0){
-        echo '<td><img src="'.$row['screenshot'].'" alt="Score image" /></td></tr>';
+    if (is_file(GW_UPLOADPATH.$row['screenshot']) && filesize(GW_UPLOADPATH.$row['screenshot'])>0){
+        echo '<td><img src="' .GW_UPLOADPATH.$row['screenshot'].'" alt="Score image" /></td></tr>';
     }
     else{
-        echo '<td><img src="unverified.gif" alt="Unverified score" /></td></tr>';
+        echo '<td><img src="'.GW_UPLOADPATH.'unverified.gif'.'" alt="Unverified score" /></td></tr>';
     }
   }
   echo '</table>';
