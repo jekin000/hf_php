@@ -12,10 +12,11 @@
   <hr />
 
 <?php
-  define('GW_UPLOADPATH','images/');
-  
+  require_once('appvars.php');
+  require_once('connectvars.php');
+
   // Connect to the database 
-  $dbc = mysqli_connect('localhost', 'root', 'root', 'guitarwars')
+  $dbc = mysqli_connect(DB_HST,DB_USR , DB_PWD, DB_NAM)
     or die('Can not connect database.');
 
   // Retrieve the score data from MySQL

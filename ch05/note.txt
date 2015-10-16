@@ -48,5 +48,15 @@
 9.php define
     define('MACRO','mm')
 
+10. php 's  "include"
+    there are 4 include method;
+    'include' statment: if no file, it won't print error, may include more than
+once;
+    'include_once' statement: if no file, it won't print error, just
+include_once;
 
-        
+    'require' statement: if no file , print error, may include more than once;
+    'require_once' statement: if no file, print error, may include just once;
+
+    e.g.
+    require('a.php')    
