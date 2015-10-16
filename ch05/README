@@ -7,5 +7,6 @@ Now you must make it support upload image.
 
 
 
-1) upload file
-2) store and print a image.
+1) upload file;
+2) display image on web;
+3) check file exsit,empty;

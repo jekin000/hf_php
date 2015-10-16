@@ -23,3 +23,19 @@
     #input field
     <input type="file" id="screenshot" name="screenshot" />
 
+3. is_file(name), check file exists.
+   filesize(), check file's size. normally, not empty.
+
+4.[html] image
+     <td><img src="'$row['screenshot']'" alt="Score image" /></td></tr>
+
+5.$_FILES
+    When use <input type="file"...
+    you must use $_FILES to fetch the upload file's property.
+    e.g.
+        $_FILES['screenshot']['name'] #aa.gif
+        $_FILES['screenshot']['type'] #image/gif
+        $_FILES['screenshot']['size'] #12244
+        $_FILES['screenshot']['tmp_name'] #/tmp/phpE7qJky
+        $_FILES['screenshot']['error'] #0
+        

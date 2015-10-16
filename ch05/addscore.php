@@ -14,15 +14,16 @@
     // Grab the score data from the POST
     $name = $_POST['name'];
     $score = $_POST['score'];
+    $screenshot = $_FILES['screenshot']['name'];
 
     if (!empty($name) && !empty($score)) {
       // Connect to the database
       $dbc = mysqli_connect('localhost', 'root', 'root', 'guitarwars');
 
       // Write the data to the database
-      $query = "INSERT INTO guitarwars VALUES (0, NOW(), '$name', '$score')";
-      mysqli_query($dbc, $query);
-
+      $query = "INSERT INTO guitarwars (id,date,name,score,screenshot) VALUES (0, NOW(), '$name', '$score','$screenshot')";
+      mysqli_query($dbc, $query)
+        or die('Can not insert to database.');
       // Confirm success with the user
       echo '<p>Thanks for adding your new high score!</p>';
       echo '<p><strong>Name:</strong> ' . $name . '<br />';
