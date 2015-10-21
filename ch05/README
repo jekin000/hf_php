@@ -8,6 +8,9 @@ The user can input there name,score to website.
 3) display the highest'score;
 4) valid check, such as size, type , etc;
 5) do not display the record which have no image.
+    we can delete the rows which have no image.
+    5.1) an admin page,which can display all rows waiting to be delete;
+    5.2) removescore page, if the row is selected, the removescore page will delete the row.
 
 
 

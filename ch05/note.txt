@@ -72,4 +72,12 @@ preceding the '@' in front of this function, like '@unlink()'
 uploaded.
 
 
+13. [html/http] GET & POST
+    POST, only use in form, it can send data to server, and make data change
+on server;
+    In form action,you can not see data.
 
+    GET, use in form & URL, it request data from server,and do no change to
+server.
+    It can also be used in URL, which data will be visible.
+    GET is primary suited for send a small mount to server.
