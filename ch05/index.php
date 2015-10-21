@@ -20,13 +20,18 @@
     or die('Can not connect database.');
 
   // Retrieve the score data from MySQL
-  $query = "SELECT * FROM guitarwars";
+  $query = "SELECT * FROM guitarwars ORDER BY score DESC, date ASC";
   $data = mysqli_query($dbc, $query)
     or die('Query database failed.');
  
   // Loop through the array of score data, formatting it as HTML 
   echo '<table>';
+  $i = 0;
   while ($row = mysqli_fetch_array($data)) { 
+    if ($i == 0){
+        echo '<tr><td colspan="2" class="topscoreheader">Top Score:'.
+            $row['score'].'</td></tr>';
+    }
     // Display the score data
     echo '<tr><td class="scoreinfo">';
     echo '<span class="score">' . $row['score'] . '</span><br />';
@@ -38,6 +43,7 @@
     else{
         echo '<td><img src="'.GW_UPLOADPATH.'unverified.gif'.'" alt="Unverified score" /></td></tr>';
     }
+    $i++;
   }
   echo '</table>';
 

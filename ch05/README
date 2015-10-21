@@ -3,10 +3,11 @@ The game "Guitar Wars"'s web record.
 The user can input there name,score to website.
 
 
-Now you must make it support upload image.
+1) Now you must make it support upload image;
+2) display image on web pages;
+3) display the highest'score;
+4) valid check, such as size, type , etc;
+5) do not display the record which have no image.
 
 
 
-1) upload file;
-2) display image on web;
-3) check file exsit,empty;
