@@ -14,7 +14,7 @@
         echo '<td>'.$row['date'].'</td>';
         echo '<td><a href="removescore.php?id='.
                 $row['id'].
-                '&amp;data='.$row['date'].
+                '&amp;date='.$row['date'].
                 '&amp;name='.$row['name'].
                 '&amp;score='.$row['score'].
                 '&amp;screenshot='.$row['screenshot'].

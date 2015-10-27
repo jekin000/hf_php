@@ -21,6 +21,7 @@
         $id     = $_GET['id'];
         $date   = $_GET['date']; 
         $score  = $_GET['score'];
+        $name   = $_GET['name'];
         $screenshot = $_GET['screenshot'];
     }
     // Submit data to DB
@@ -37,15 +38,17 @@
     }
 
     if (isset($_POST['submit'])) {
-        if ($_POST['confirm'] == true){
+        if ($_POST['confirm'] == 'Yes'){
             @unlink(GW_UPLOADPATH.$screenshot);
             $dbc = mysqli_connect(DB_HST,DB_USR,DB_PWD,DB_NAM)
                 or die("connect db failed.");
-            $query = "SELECT * FROM guitarwars WHERE id=$id LIMIT 1";
-            mysqli_query($dbc,$query);
+            $query = "DELETE FROM guitarwars WHERE id=$id LIMIT 1";
+            mysqli_query($dbc,$query)
+                or die("query failed.");
+
             mysqli_close($dbc);
 
-            echo '<p>The high score of '.$score.' for '.$name.'was successfully removed.</p>';
+            echo '<p>The high score of '.$score.' for '.$name.' was successfully removed.</p>';
         }
         else {
             echo '<p class="error">The high score was not removed</p>';
@@ -64,8 +67,15 @@
             .'<strong>Score:</strong>'.$score.'</br>'
             .'</p>';
         echo '<form method="post" action="removescore.php">';
+        echo '<input type="radio" name="confirm" value="Yes"/> Yes';
+        echo '<input type="radio" name="confirm" value="No" checked="checked"/> No <br />';
+        echo '<input type="submit" name="submit" value="Submit" />';
+        echo '<input type="hidden" name="id" value="'.$id.'" />';
+        echo '<input type="hidden" name="name" value="'.$name.'" />';
+        echo '<input type="hidden" name="score" value="'.$score.'" />';
         echo '</form>';
     }
+    echo '<p><a href=admin.php>&lt;&lt; Back to admin page</a></p>'
 ?>
 
 </body>
