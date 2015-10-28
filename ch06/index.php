@@ -20,7 +20,7 @@
     or die('Can not connect database.');
 
   // Retrieve the score data from MySQL
-  $query = "SELECT * FROM guitarwars ORDER BY score DESC, date ASC";
+  $query = "SELECT * FROM guitarwars WHERE approved=1 ORDER BY score DESC, date ASC";
   $data = mysqli_query($dbc, $query)
     or die('Query database failed.');
  

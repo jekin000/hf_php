@@ -36,3 +36,11 @@
 
 5) [sql] TINYINT
     just as BOOL
+
+6) isset
+    if the db value is NULL, when we call "SELECT * FROM xx",
+isset($row['x']) is false.
+
+    if the db value is 0, when we call "SELECT * FROM xx" isset($row['x']) is
+true
+
