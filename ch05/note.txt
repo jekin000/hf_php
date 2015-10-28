@@ -43,7 +43,8 @@
 
 7.move upload file from tmp to self-define place
     move_uploaded_file($_FILES['filename']['tmp_name'],'self-place')
-    NOTICE, this may caused authority problem, please check SELinux.
+    NOTICE, this may caused authority problem, please check SELinux(search
+'SELinux' on my evernote).
 
 9.php define
     define('MACRO','mm')
