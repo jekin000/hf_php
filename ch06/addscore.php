@@ -32,7 +32,7 @@
                         or die("Connect DB failed.");
 
                     // Write the data to the database
-                    $query = "INSERT INTO guitarwars (id,date,name,score,screenshot) VALUES (0, NOW(), '$name', '$score','$screenshot')";
+                    $query = "INSERT INTO guitarwars (id,date,name,score,screenshot,approved) VALUES (0, NOW(), '$name', '$score','$screenshot',0)";
                     mysqli_query($dbc, $query)
                         or die('Can not insert to database.');
                     // Confirm success with the user
