@@ -1,4 +1,4 @@
-1) header
+1) header()
     PHP can generate a http header by function header()
     the header code must be the head of all code.
     e.g.
@@ -30,3 +30,6 @@
 
 3) $_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']
     When use auth , you can use $_SERVER to fetch the user's data.
+
+4) exit()
+    PHP use exit() to exit the script without run any code else.
