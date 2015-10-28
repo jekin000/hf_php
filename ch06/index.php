@@ -9,6 +9,7 @@
 <body>
   <h2>Guitar Wars - High Scores</h2>
   <p>Welcome, Guitar Warrior, do you have what it takes to crack the high score list? If so, just <a href="addscore.php">add your own score</a>.</p>
+  <p><a href="admin.php">Admin</a></p>
   <hr />
 
 <?php

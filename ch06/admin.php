@@ -14,7 +14,8 @@
     
     echo '<table>';
     while ($row=mysqli_fetch_array($data)){
-        echo '<tr class="scorerow"><td><strong>'.$row['name'].'</strong></td>';
+        echo '<tr class="scorerow">';
+        echo '<td><strong>'.$row['name'].'</strong></td>';
         echo '<td>'.$row['date'].'</td>';
         echo '<td><a href="removescore.php?id='.
                 $row['id'].
@@ -22,7 +23,18 @@
                 '&amp;name='.$row['name'].
                 '&amp;score='.$row['score'].
                 '&amp;screenshot='.$row['screenshot'].
-                '">Remove</a></td></tr>';
+                '">Remove</a>';
+        if (!isset($row['approved']) || $row['approved']==0){
+            echo '/';
+            echo '<a href="approvescore.php?id='
+                .$row['id']
+                .'&amp;date='.$row['date']
+                .'&amp;name='.$row['name']
+                .'&amp;score='.$row['score']
+                .'&amp;screenshot='.$row['screenshot']
+                .'">Approve</a>';
+        }
+        echo '</td></tr>';
     }
     echo '</table>';    
     mysqli_close($dbc);
