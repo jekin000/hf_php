@@ -28,4 +28,5 @@
 2) realm in WWW-Authenticate
     browser can remember the user/pass in its memory.
 
-
+3) $_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']
+    When use auth , you can use $_SERVER to fetch the user's data.
