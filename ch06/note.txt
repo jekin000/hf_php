@@ -33,3 +33,6 @@
 
 4) exit()
     PHP use exit() to exit the script without run any code else.
+
+5) [sql] TINYINT
+    just as BOOL

@@ -1,3 +1,10 @@
 1. The guitar wars's scores are lost.
-    So you must provide a secure measure such as username/password
+    So you must provide a secure measure such as username/password to admin pageand removescore page.
 
+2. human moderation
+    someone upload a fake image,so we want the human check for each upload.
+    2.1) DB support
+    2.2) Add score support
+    2.3) index page support
+    2.4) admin's link
+    2.5) approval page
