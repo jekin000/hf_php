@@ -1,0 +1,31 @@
+1) header
+    PHP can generate a http header by function header()
+    the header code must be the head of all code.
+    e.g.
+    #redirect
+    <?php
+        header('Location: http://www.guitarwars.net/about.php');
+    ?>
+
+    #redirect after x seconds
+    <?php
+        header('Refresh: 5; url=http://www.guitarwars.net/about.php');
+        echo 'In 5 seconds you'll be taken to the About page.';
+    ?>
+
+    #display in plain mode
+    <?php
+        header('Content-Type: text/plain');
+        echo 'This <strong>text</strong> won't actually be bold.';
+    ?>
+
+    #username & password
+    <?php
+        header('HTTP/1.1 401 Unauthorized');
+        header('WWW-Authenticate: Basic realm="Guitar Wars"');
+    ?>
+
+2) realm in WWW-Authenticate
+    browser can remember the user/pass in its memory.
+
+
