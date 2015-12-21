@@ -67,7 +67,8 @@ include_once;
 
 12.@unlink()
     @: if you found some function may generate an error report, you can
-preceding the '@' in front of this function, like '@unlink()'
+preceding the '@' in front of this function, like '@unlink()' to prevent
+error report.
 
     unlink():delete files in web server,in the case the temp file that was
 uploaded.
