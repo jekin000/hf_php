@@ -44,3 +44,10 @@ isset($row['x']) is false.
     if the db value is 0, when we call "SELECT * FROM xx" isset($row['x']) is
 true
 
+
+7) [sql] SQL comment
+    --
+    #
+    /* ... */
+
+

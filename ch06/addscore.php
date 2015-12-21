@@ -20,7 +20,8 @@
     $screenshot_type = $_FILES['screenshot']['type'];
     $screenshot_size = $_FILES['screenshot']['size'];
 
-    if (!empty($name) && !empty($score) && !empty($screenshot)) {
+    //is_numeric($score) is prevent DB injection
+    if (!empty($name) && is_numeric($score) && !empty($screenshot)) {
         if ((($screenshot_size>0)||($screenshot_size<=GW_MAXFILESIZE))
                 && (($screenshot_type=='image/gif')||($screenshot_type=='image/jpeg')
                 ||($screenshot_type=='image/pjpeg')||($screenshot_type=='image/png'))){
@@ -31,10 +32,16 @@
                     $dbc = mysqli_connect(DB_HST,DB_USR , DB_PWD, DB_NAM)
                         or die("Connect DB failed.");
 
+                    // prevent DB injection
+                    mysqli_real_escape_string($dbc,trim($name));
+                    mysqli_real_escape_string($dbc,trim($score));
+                    mysqli_real_escape_string($dbc,trim($screenshot));
+
                     // Write the data to the database
-                    $query = "INSERT INTO guitarwars (id,date,name,score,screenshot,approved) VALUES (0, NOW(), '$name', '$score','$screenshot',0)";
+                    $query = "INSERT INTO guitarwars (date,name,score,screenshot) VALUES (NOW(), '$name', '$score','$screenshot')";
                     mysqli_query($dbc, $query)
-                        or die('Can not insert to database.');
+                            or die('Can not insert to database.');
+
                     // Confirm success with the user
                     echo '<p>Thanks for adding your new high score!</p>';
                     echo '<p><strong>Name:</strong> ' . $name . '<br />';
