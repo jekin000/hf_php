@@ -12,6 +12,7 @@
 <?php
   require_once('appvars.php');
   require_once('connectvars.php');
+  require_once('login.php');
 
   // Connect to the database
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
