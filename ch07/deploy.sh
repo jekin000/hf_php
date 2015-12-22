@@ -1,2 +1,3 @@
 #!/bin/bash
-sudo cp xxx.php  /var/www/html/hf_ch07/
+sudo cp connectvars.php  /var/www/html/hf_ch07/
+
