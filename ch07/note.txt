@@ -1,0 +1,27 @@
+1. [sql]
+    ALTER TABLE xxx ADD uuu  ttt NOT NULL AFTER iii,
+                    ADD ppp  ttt NOT NULL AFTER uuu;
+    NOTICE there is a AFTER
+
+2. [sql]
+    ALTER TABLE xxx CHANGE ppp ppp ttt NOT NULL;
+    NOTICE there is a CHANGE
+
+3. [sql]
+    password encrypted
+    SHA()
+    MD5()
+    the SHA() algorithm is considered a little more secure than MD5().
+    e.g.
+            INSERT INTO mismatch_user(
+                username, password, join_date) 
+            VALUES ('jnettles', SHA('tatlover'), NOW())
+
+        SELECT * FROM mismatch_user
+        WHERE password = SHA('tatlover')
+
+4.php also have encryped method, which is sha1(),md5()
+
+5.password transmission & storing
+    SHA() is a way storing the password.
+
