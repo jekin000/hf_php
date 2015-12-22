@@ -50,4 +50,26 @@ true
     #
     /* ... */
 
+8) [sql]
+    SQL injection
+    Dangerous characters: ,,',",--,#, , 
 
+9) The solution of SQL injection
+    9.1) trim()
+    9.2) mysqli_real_escape_string();
+        e.g.
+          mysqli_real_escape_string($dbc,trim($_POST['name'])); 
+    9.3) [sql] SQL parameter
+        e.g.
+            INSERT INTO table (P1,P2,P3,P4) VALUES (p1,p2,p3,p4);
+    9.4) check input data type and not empty.
+        e.g.
+        is_numeric(20) --> true
+        is_numeric('hello') --> false
+
+10) [sql] update column default value.
+   ALTER TABLE guitarwars
+    MODIFY COLUMN approved TINYINT
+    DEFAULT 0
+ 
+     
