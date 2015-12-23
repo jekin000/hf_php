@@ -4,8 +4,8 @@
     if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])){
         header('HTTP/1.1 401 Unauthorized');
         header('WWW-Authenticate: Basic realm=Mismatch');
-        exit('<h2></h2>Sorry, you must enter your username and password'
-            .'to login in and access this page.'); 
+        exit('<h2>Mismatch</h2>Sorry, you must enter your username and password'
+            .' to login in and access this page.If you aren\'t a registered member,please <a href="signup.php">sign up</a>.'); 
     }
 
     $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME)
@@ -26,7 +26,7 @@
     else{
         header('HTTP/1.1 401 Unauthorized');
         header('WWW-Authenticate: Basic realm=Mismatch');
-        exit('<h2></h2>Sorry, you must enter a valid username and password'
+        exit('<h2>Mismatch</h2>Sorry, you must enter a valid username and password'
             .'to login in and access this page.'); 
     }
 
