@@ -21,7 +21,7 @@
                 mysqli_query($dbc,$query)
                         or die('Insert into database failed.');
                 echo '<p>Your new account has been successfully created. You\'re now'.
-                       'ready to log in and '.'<a href="editprofile.php">edit your profile</a>. </p>';
+                       'ready to <a href="login.php">Login In</a>. </p>';
             }
             else{
                 echo '<p class="error">Username exists, please input a different username.</p>';

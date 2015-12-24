@@ -46,4 +46,15 @@ user what he log as.
 
     It do not save password.
 
+9.Normal html format:
+<html>
+    <head>
+    </head>
+    <body>
+        <h3></h3>
+        <form>
+        </form>
+    </body>
+</html>
+
 

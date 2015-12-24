@@ -1,7 +1,3 @@
-<?php
-  require_once('login.php');
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -22,7 +18,7 @@
 
   // Grab the profile data from the database
   if (!isset($_GET['user_id'])) {
-    $query = "SELECT username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '$user_id'";
+    $query = "SELECT username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = ".$_COOKIE['user_id'];
   }
   else {
     $query = "SELECT username, first_name, last_name, gender, birthdate, city, state, picture FROM mismatch_user WHERE user_id = '" . $_GET['user_id'] . "'";
@@ -56,7 +52,7 @@
       echo '</td></tr>';
     }
     if (!empty($row['birthdate'])) {
-      if (!isset($_GET['user_id']) || ($user_id == $_GET['user_id'])) {
+      if (!isset($_GET['user_id']) || ($_COOKIE['user_id'] == $_GET['user_id'])) {
         // Show the user their own birthdate
         echo '<tr><td class="label">Birthdate:</td><td>' . $row['birthdate'] . '</td></tr>';
       }
@@ -74,7 +70,7 @@
         '" alt="Profile Picture" /></td></tr>';
     }
     echo '</table>';
-    if (!isset($_GET['user_id']) || ($user_id == $_GET['user_id'])) {
+    if (!isset($_GET['user_id']) || ($_COOKIE['user_id'] == $_GET['user_id'])) {
       echo '<p>Would you like to <a href="editprofile.php">edit your profile</a>?</p>';
     }
   } // End of check for a single row of user results
