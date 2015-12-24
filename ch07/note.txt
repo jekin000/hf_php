@@ -25,3 +25,25 @@
 5.password transmission & storing
     SHA() is a way storing the password.
 
+6.cookie VS HTTP Authentication
+    The HTTP Auth will still exsit until you close web browser. It do not
+support log-out.
+    The cookie is stored on your disk,and you can delete it which means
+log-out. Cookie has expiration date, when arrive at this date, the cookie will
+be automatic deleted.
+
+7. php cookie
+    setcookie('username','sidneyk');
+    $_COOKIE['username'];
+    if you do not set cookie's expiration date , the cookie will be deleted
+when you close the web brower.
+
+8. Notice the cookie the book saved.
+    The book only save two cookie,
+    one for user_id, another for username.
+    the user_id if for check user log status, wheras the username is for tell
+user what he log as.
+
+    It do not save password.
+
+
