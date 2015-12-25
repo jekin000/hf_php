@@ -9,5 +9,6 @@ sudo cp logout.php  /var/www/html/hf_ch07/
 sudo cp appvars.php  /var/www/html/hf_ch07/
 sudo cp startsession.php  /var/www/html/hf_ch07/
 sudo cp header.php  /var/www/html/hf_ch07/
+sudo cp footer.php  /var/www/html/hf_ch07/
 
 

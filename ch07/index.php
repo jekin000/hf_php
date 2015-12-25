@@ -53,5 +53,7 @@
   mysqli_close($dbc);
 ?>
 
-</body> 
-</html>
+<?php
+  require_once('footer.php');
+?>
+

@@ -133,5 +133,8 @@
     </fieldset>
     <input type="submit" value="Save Profile" name="submit" />
   </form>
-</body> 
-</html>
+
+<?php
+  require_once('footer.php');
+?>
+
