@@ -20,7 +20,7 @@
     echo '&#10084; <a href="logout.php">Log Out('.$_COOKIE['username'].')</a><br />';
   }
   else{
-    echo '&#10084; <a href="login.php">Login In</a><br />';
+    echo '&#10084; <a href="login.php">Log In</a><br />';
     echo '&#10084; <a href="signup.php">Sign Up</a><br />';
   }
 

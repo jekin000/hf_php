@@ -38,6 +38,11 @@ be automatic deleted.
     if you do not set cookie's expiration date , the cookie will be deleted
 when you close the web brower.
 
+    e.g.
+        add cookie:         setcookie('AA','aa');
+        delete cookie:      setcookie('AA','',time-3600);
+        delete cookie:      setcookie('AA','',time-3600,'/hf_ch07/');
+
 8. Notice the cookie the book saved.
     The book only save two cookie,
     one for user_id, another for username.

@@ -1,5 +1,6 @@
 
 <?php
+    require_once('appvars.php');
     require_once('connectvars.php');
 
     $error_msg = "";
@@ -21,8 +22,8 @@
                     $row = mysqli_fetch_array($data);
                     setcookie('user_id',$row['user_id']);
                     setcookie('username',$row['username']);
-                    $home_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php';
-                    header('Location: '. $home_url);
+                    $home_url = MM_HOME_URL;
+                    header('Location: '.$home_url);
                 }
                 else {
                     $error_msg = "Sorry , you must enter a valid username or password.";
