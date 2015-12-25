@@ -1,3 +1,12 @@
+<?php
+  require_once('appvars.php');
+  require_once('connectvars.php');
+?>
+
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -10,9 +19,7 @@
   <h3>Mismatch - Edit Profile</h3>
 
 <?php
-  require_once('appvars.php');
-  require_once('connectvars.php');
-  $user_id = $_COOKIE['user_id'];
+  $user_id = $_SESSION['user_id'];
   // Connect to the database
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 

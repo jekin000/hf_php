@@ -25,12 +25,23 @@
 5.password transmission & storing
     SHA() is a way storing the password.
 
-6.cookie VS HTTP Authentication
+6.cookie VS HTTP Authentication VS session
     The HTTP Auth will still exsit until you close web browser. It do not
 support log-out.
+
     The cookie is stored on your disk,and you can delete it which means
 log-out. Cookie has expiration date, when arrive at this date, the cookie will
 be automatic deleted.
+
+    session, will store data on server. and support more data size than
+cookie. Session do not support expiration , if the browser has been shut
+down,the session will be close too.
+    session can depand on cookie or not.If do not depand on cookie, there are
+two ways to let session work well: 
+    1) change session configure in php.ini;
+    2) use session'ID in URL, and use $_GET,to fetch data from URL.
+
+More details about cookie,session,HTTP Authen are in book Page 397.
 
 7. php cookie
     setcookie('username','sidneyk');

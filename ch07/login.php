@@ -1,11 +1,16 @@
-
 <?php
     require_once('appvars.php');
     require_once('connectvars.php');
+?>
 
+<?php
+    session_start();
+?>
+
+<?php
     $error_msg = "";
 
-    if (!isset($_COOKIE['user_id'])){
+    if (!isset($_SESSION['user_id'])){
         if (isset($_POST['submit'])){
             $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME)
                     or die("Can not connect to Database.");
@@ -20,8 +25,9 @@
 
                 if (mysqli_num_rows($data) == 1){
                     $row = mysqli_fetch_array($data);
-                    setcookie('user_id',$row['user_id']);
-                    setcookie('username',$row['username']);
+                    $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['username'] = $row['username'];
+                    
                     $home_url = MM_HOME_URL;
                     header('Location: '.$home_url);
                 }
@@ -44,7 +50,7 @@
     <body>
         <h3>Mismatch - Log In</h3>
         <?php 
-            if(empty($_COOKIE['user_id'])){
+            if(empty($_SESSION['user_id'])){
                 echo '<p class="error">'.$error_msg.'</p>'
         ?>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -61,7 +67,7 @@
         <?php
             }
             else{
-                echo '<p class="login">You are logged in as '.$_COOKIE['username'].'.</p>';
+                echo '<p class="login">You are logged in as '.$_SESSION['username'].'.</p>';
             }
         ?>
     </body>

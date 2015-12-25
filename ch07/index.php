@@ -1,3 +1,12 @@
+<?php
+  require_once('appvars.php');
+  require_once('connectvars.php');
+?>
+
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -10,14 +19,11 @@
   <h3>Mismatch - Where opposites attract!</h3>
 
 <?php
-  require_once('appvars.php');
-  require_once('connectvars.php');
-
   // Generate the navigation menu
-  if ($_COOKIE['username']){
+  if ($_SESSION['username']){
     echo '&#10084; <a href="viewprofile.php">View Profile</a><br />';
     echo '&#10084; <a href="editprofile.php">Edit Profile</a><br />';
-    echo '&#10084; <a href="logout.php">Log Out('.$_COOKIE['username'].')</a><br />';
+    echo '&#10084; <a href="logout.php">Log Out('.$_SESSION['username'].')</a><br />';
   }
   else{
     echo '&#10084; <a href="login.php">Log In</a><br />';
@@ -41,7 +47,14 @@
     else {
       echo '<tr><td><img src="' . MM_UPLOADPATH . 'nopic.jpg' . '" alt="' . $row['first_name'] . '" /></td>';
     }
-    echo '<td>' . $row['first_name'] . '</td></tr>';
+
+    if (isset($_SESSION['username'])){
+      echo '<td>' . '<a href="viewprofile.php?user_id='.$row['user_id'].'">'
+                    .$row['first_name'].'</a>';
+    }
+    else{
+      echo '<td>' . $row['first_name'] . '</td></tr>';
+    }
   }
   echo '</table>';
 
