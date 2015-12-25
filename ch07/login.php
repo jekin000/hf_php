@@ -27,7 +27,9 @@
                     $row = mysqli_fetch_array($data);
                     $_SESSION['user_id'] = $row['user_id'];
                     $_SESSION['username'] = $row['username'];
-                    
+                    setcookie('user_id',$row['user_id'],time()+3600); 
+                    setcookie('username',$row['username'],time()+3600);
+
                     $home_url = MM_HOME_URL;
                     header('Location: '.$home_url);
                 }

@@ -4,3 +4,4 @@ A Web sit for dating: Mis-match.net
 2. they need a sign-up page.
 3. they need log-out.
 4. someone's browser is prevent cookie;
+5. someone close the web browser, and force to log-out.

@@ -14,6 +14,8 @@
         }
 
         session_destroy();
+        setcookie('user_id','',time()-3600);
+        setcookie('username','',time()-3600);
     }
  
     $home_url = MM_HOME_URL;

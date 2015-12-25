@@ -73,4 +73,10 @@ user what he log as.
     </body>
 </html>
 
+10.session
+    $_SESSION[]
+    session_start();
+    session_name();
+    session_destroy();
+    $_SESSION = array();
 
