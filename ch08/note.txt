@@ -1,0 +1,11 @@
+1) [Database] foreign keys
+
+2) [Database] referential integrity
+
+3) [Database]
+    one-to-one         --
+    one-to-many       |->
+                      |->
+    many-to-many      <->
+
+
