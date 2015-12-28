@@ -10,6 +10,7 @@
 <?php
   $page_title = 'Edit Profile';
   require_once('header.php');
+  require_once('navmenu.php');
 ?>
 
 <?php
