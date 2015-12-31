@@ -1,11 +1,23 @@
 1) [Database] foreign keys
+    k is Table A's prim key, and k in Table B.
+    we call key is B's "foreign key";
 
 2) [Database] referential integrity
+    k,kb,kc are prim key for Table A,B,C;
+    k,kc is B's foreign key;
+    the k,kb,kc must match each other, we call this is "referential integrity"
 
-3) [Database]
+3) [Database] relationship
     one-to-one         --
+        some time, two table have one-to-one relation,can join together. but
+not all condition need join together.
+
     one-to-many       |->
                       |->
     many-to-many      <->
+
+4) [Database] junction table
+    Table A,C have no direct relation, but connect by Table B (B has A,C's
+index). We call B is A,C's "junction table".
 
 
