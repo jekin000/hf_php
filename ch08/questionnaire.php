@@ -21,14 +21,43 @@
 <?php
     $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME)
             or die("Connect Database failed.");
+
+    $query = "SELECT * from mismatch_response"
+            ." WHERE user_id=".$_SESSION['user_id'];
+    $data  = mysqli_query($dbc,$query)
+            or die($query);
+
+    /* init user-id to response*/
+    if (mysqli_num_rows($data) == 0){
+        $query = 'SELECT topic_id from mismatch_topic ORDER BY category,topic_id';
+        $data_topic = mysqli_query($dbc,$query)
+                or die('Query failed for mismatch_topic');
+        
+        $topic_ids = array();
+        while ($row = mysqli_fetch_array($data_topic)){
+            array_push($topic_ids,$row['topic_id']);
+        }
+
+        foreach ($topic_ids as $topic_id){
+            $query = "INSERT INTO mismatch_response(user_id,topic_id)"
+                    ."VALUES('".$_SESSION['user_id']."'"
+                    .",'".$topic_id."')";
+            mysqli_query($dbc,$query)
+                or die("INSERT INTO mismatch_response failed.");
+        }
+
+    }
+
     $query = 'SELECT * from mismatch_topic';
-    $data = mysqli_query($dbc,$query);
+    $data2 = mysqli_query($dbc,$query);
 
     $responses = array();
 
-    while ($row = mysqli_fetch_array($data)){
+    while ($row = mysqli_fetch_array($data2)){
         array_push($responses,$row);
     }
+
+    mysqli_close($dbc);
 ?>
 <?php
     echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'">';
