@@ -19,14 +19,34 @@
 ?>
 
 <?php
+    $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME)
+            or die("Connect Database failed.");
+    $query = 'SELECT * from mismatch_topic';
+    $data = mysqli_query($dbc,$query);
+
+    $responses = array();
+
+    while ($row = mysqli_fetch_array($data)){
+        array_push($responses,$row);
+    }
+?>
+<?php
     echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'">';
     echo '<p>How do you feel about each topic?</p>';
-    echo '<fieldset><legend>Hobby</legend>';
-    echo '<label for="2">Movie</label>';
-    echo '<input type="radio" id="2" name="2" value="1"/>Love ';
-    echo '<input type="radio" id="2" name="2" value="2"/>Hate ';
+
+    $category = $responses[0]['category'];
+    echo '<fieldset><legend>'.$category.'</legend>';
+    foreach($responses as $response){
+        if ($category != $response['category']){
+            $category = $response['category'];
+            echo '</fieldset><fieldset><legend>'.$category.'</legend>';
+        }
+        $label_id = $response['topic_id'];
+        echo '<label for="'.$label_id.'">'.$response['name'].':</label>';
+        echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="1"/>Love ';
+        echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="2"/>Hate </br>';
+    }
     echo '</fieldset>';
-    
     echo '<input type="submit" value="Save Questionnaire" name="submit">';
     echo '</form>';
 ?>
