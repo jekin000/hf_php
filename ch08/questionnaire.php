@@ -48,12 +48,21 @@
 
     }
 
-    $query = 'SELECT * from mismatch_topic';
-    $data2 = mysqli_query($dbc,$query);
+    $query = "SELECT response_id,topic_id,response FROM mismatch_response "
+            ."WHERE user_id=".$_SESSION['user_id'];
+    $data = mysqli_query($dbc,$query)
+            or die($query);
 
     $responses = array();
 
-    while ($row = mysqli_fetch_array($data2)){
+    while ($row=mysqli_fetch_array($data)){
+        $query = "SELECT name,category FROM mismatch_topic "
+                ."WHERE topic_id=".$row['topic_id'];
+        $data2 = mysqli_query($dbc,$query)
+                or die($query);
+        $row2 = mysqli_fetch_array($data2);
+        $row['topic_name'] = $row2['name'];
+        $row['topic_category'] = $row2['category'];
         array_push($responses,$row);
     }
 
@@ -63,15 +72,16 @@
     echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'">';
     echo '<p>How do you feel about each topic?</p>';
 
-    $category = $responses[0]['category'];
+    /* loop tag.*/
+    $category = $responses[0]['topic_category'];
     echo '<fieldset><legend>'.$category.'</legend>';
     foreach($responses as $response){
-        if ($category != $response['category']){
-            $category = $response['category'];
+        if ($category != $response['topic_category']){
+            $category = $response['topic_category'];
             echo '</fieldset><fieldset><legend>'.$category.'</legend>';
         }
         $label_id = $response['topic_id'];
-        echo '<label for="'.$label_id.'">'.$response['name'].':</label>';
+        echo '<label for="'.$label_id.'">'.$response['topic_name'].':</label>';
         echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="1"/>Love ';
         echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="2"/>Hate </br>';
     }
