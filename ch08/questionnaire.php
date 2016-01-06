@@ -47,7 +47,15 @@
         }
 
     }
-
+    if (isset($_POST['submit'])){
+        foreach ($_POST as $response_id=>$response){
+            $query = "UPDATE mismatch_response SET response= '$response'".
+                    " WHERE response_id='$response_id'";
+            mysqli_query($dbc,$query)
+                or die($query);
+        }
+        echo '<p>Your response have been saved.</p>';
+    }
     $query = "SELECT response_id,topic_id,response FROM mismatch_response "
             ."WHERE user_id=".$_SESSION['user_id'];
     $data = mysqli_query($dbc,$query)
@@ -80,10 +88,12 @@
             $category = $response['topic_category'];
             echo '</fieldset><fieldset><legend>'.$category.'</legend>';
         }
-        $label_id = $response['topic_id'];
-        echo '<label for="'.$label_id.'">'.$response['topic_name'].':</label>';
-        echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="1"/>Love ';
-        echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="2"/>Hate </br>';
+        $label_id = $response['response_id'];
+        echo '<label '.($response['response']==NULL ? 'class="error"':'').'for="'.$label_id.'">'.$response['topic_name'].':</label>';
+        echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="1" '
+                .($response['response']==1 ? 'checked="checked"':'').' />Love ';
+        echo '<input type="radio" id="'.$label_id.'" name="'.$label_id.'" value="2" '
+                .($response['response']==2 ? 'checked="checked"':'').' />Hate </br> ';
     }
     echo '</fieldset>';
     echo '<input type="submit" value="Save Questionnaire" name="submit">';

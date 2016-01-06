@@ -21,3 +21,5 @@ not all condition need join together.
 index). We call B is A,C's "junction table".
 
 
+5) TestExpression ? Statement1 : Statemenet2
+    ($response['response']==1 ? 'checked="checked"':'')
