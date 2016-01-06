@@ -23,3 +23,32 @@ index). We call B is A,C's "junction table".
 
 5) TestExpression ? Statement1 : Statemenet2
     ($response['response']==1 ? 'checked="checked"':'')
+
+6) ternary operator
+    a ? b : c
+
+7) Normalization 
+    Normalization means designing a database to reduce duplicate data and
+improve the relationships between data.
+    1. Pick your thing , the "ONE THING" you want a table to describe;
+        (What's the main thing you want your table to be about?)
+
+    2. Make a "LIST OF THE INFORMATION" you need to know about your one thing
+when you're "USING THE TABLE".
+        (How will you use this table?)
+
+    3. Using the list, "BREAK DOWN THE INFORMATION" about your thing "INTO
+PIECES" you can use for "ORGANIZING THE TABLE".
+        (How can you most easily query this table)
+
+ATOM:
+    1. What is the "ONE THING" your table describe?
+    2. How will you "USE" the table to "GET AT" the "ONG THING"?
+    3. Do your "COLUMNS" contain "ATOMIC DATA" to make your queries short and
+to the point?
+
+CHECKLIST:
+    1. Make sure your columns are atomic;
+    2. Give each table its own primary key;
+    3. Make sure non-key columns aren't dependent on each other.(practical
+realities )
