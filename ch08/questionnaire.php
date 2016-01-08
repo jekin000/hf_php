@@ -29,7 +29,7 @@
 
     /* init user-id to response*/
     if (mysqli_num_rows($data) == 0){
-        $query = 'SELECT topic_id from mismatch_topic ORDER BY category,topic_id';
+        $query = 'SELECT topic_id from mismatch_topic ORDER BY category_id,topic_id';
         $data_topic = mysqli_query($dbc,$query)
                 or die('Query failed for mismatch_topic');
         
@@ -56,21 +56,17 @@
         }
         echo '<p>Your response have been saved.</p>';
     }
-    $query = "SELECT response_id,topic_id,response FROM mismatch_response "
-            ."WHERE user_id=".$_SESSION['user_id'];
+    $query = "SELECT mr.response_id,mr.topic_id,mr.response,mt.name AS topic_name, mc.name AS topic_category"
+            ." FROM mismatch_response AS mr"
+            ." INNER JOIN mismatch_topic AS mt USING(topic_id)"
+            ." INNER JOIN mismatch_category AS mc USING(category_id)"
+            ." WHERE mr.user_id=".$_SESSION['user_id'];
     $data = mysqli_query($dbc,$query)
             or die($query);
 
     $responses = array();
 
     while ($row=mysqli_fetch_array($data)){
-        $query = "SELECT name,category FROM mismatch_topic "
-                ."WHERE topic_id=".$row['topic_id'];
-        $data2 = mysqli_query($dbc,$query)
-                or die($query);
-        $row2 = mysqli_fetch_array($data2);
-        $row['topic_name'] = $row2['name'];
-        $row['topic_category'] = $row2['category'];
         array_push($responses,$row);
     }
 

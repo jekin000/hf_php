@@ -52,3 +52,19 @@ CHECKLIST:
     2. Give each table its own primary key;
     3. Make sure non-key columns aren't dependent on each other.(practical
 realities )
+
+8) [sql]
+    ALTER TABLE X 
+    DROP COLUMNS y;
+
+    ALTER TABLE X
+    ADD COLUMNS z;
+
+9) [sql]
+    INNER JOIN
+    table.columns
+    "WHERE" take effect on source data, not the join result
+    ON tb_a.c1 == tb_b.c1  are equal to USING (c1)
+
+
+    
