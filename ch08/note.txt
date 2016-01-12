@@ -66,5 +66,17 @@ realities )
     "WHERE" take effect on source data, not the join result
     ON tb_a.c1 == tb_b.c1  are equal to USING (c1)
 
+10) for(;;) statement
+    e.g.
+        for ($i=0; $i<count($array); $i++)
 
-    
+11) count() statement
+
+12) array_slice()
+    e.g.
+        $arr_a1 = array();
+        $arr_a2 = array();
+        array_push($arr_a2,3);
+        $arr_a1 = array_slice($arr_a2);
+
+ 

@@ -27,7 +27,10 @@
     $data  = mysqli_query($dbc,$query)
             or die($query);
 
-    /* init user-id to response*/
+    /* 
+     * If it is first time user access this page,
+     * init the data.
+     */
     if (mysqli_num_rows($data) == 0){
         $query = 'SELECT topic_id from mismatch_topic ORDER BY category_id,topic_id';
         $data_topic = mysqli_query($dbc,$query)
@@ -56,6 +59,8 @@
         }
         echo '<p>Your response have been saved.</p>';
     }
+
+    /* get the submit form data.*/
     $query = "SELECT mr.response_id,mr.topic_id,mr.response,mt.name AS topic_name, mc.name AS topic_category"
             ." FROM mismatch_response AS mr"
             ." INNER JOIN mismatch_topic AS mt USING(topic_id)"
@@ -72,7 +77,9 @@
 
     mysqli_close($dbc);
 ?>
+
 <?php
+    /* submit form*/
     echo '<form method="post" action="'.$_SERVER['PHP_SELF'].'">';
     echo '<p>How do you feel about each topic?</p>';
 
@@ -95,6 +102,8 @@
     echo '<input type="submit" value="Save Questionnaire" name="submit">';
     echo '</form>';
 ?>
+
+
 <?php
     require_once('footer.php');
 ?>
