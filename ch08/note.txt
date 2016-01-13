@@ -1,3 +1,7 @@
+0) [Database] Schemas
+    A schema is a representation of all the structures(tables, columns,etc.)
+    in your database, along with how the connect.
+
 1) [Database] foreign keys
     k is Table A's prim key, and k in Table B.
     we call key is B's "foreign key";
@@ -77,6 +81,6 @@ realities )
         $arr_a1 = array();
         $arr_a2 = array();
         array_push($arr_a2,3);
-        $arr_a1 = array_slice($arr_a2);
+        $arr_a1 = array_slice($arr_a2,0);
 
  
