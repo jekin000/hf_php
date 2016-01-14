@@ -1,0 +1,5 @@
+1) [sql] LIKE
+    SELECT job_id FROM riskyjobs WHERE title LIKE '%fighter%'
+    
+    other LIKE
+    LIKE '__fighter%'
