@@ -54,3 +54,8 @@ new string.
     Index<0:BA987654321
     e.g.
     substr($str,0,10)
+
+9) [sql] SUBSTRING(string,start,length)
+    NOTICE: begin is from 1 not 0
+    SELECT SUBSTRING(job_description,1,100)
+    FROM riskyjobs
