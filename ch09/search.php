@@ -16,7 +16,7 @@
   $sort = $_GET['sort'];
   $user_search = $_GET['usersearch'];
 
-  // Start generating the table of results
+ // Start generating the table of results
   echo '<table border="0" cellpadding="2">';
 
   // Generate the search result headings
@@ -30,8 +30,22 @@
     or die("Connect DB failed.");
 
   // Query to get the results
-  $query = "SELECT * FROM riskyjobs WHERE title = '$user_search'";
-  $result = mysqli_query($dbc, $query);
+  $query = "SELECT * FROM riskyjobs WHERE ";
+  $where_clause = '';
+  $user_search_words_list = explode(' ',$user_search);
+  $where_list = array();
+  foreach($user_search_words_list as $word){
+    $where_list[] = "description LIKE '%$word%'";
+  }  
+
+  $where_clause = implode(' OR ',$where_list);
+ 
+  if (!empty($where_clause)){
+    $query .= $where_clause;
+    $result = mysqli_query($dbc, $query)
+        or die($result);
+  }
+
   while ($row = mysqli_fetch_array($result)) {
     echo '<tr class="results">';
     echo '<td valign="top" width="20%">' . $row['title'] . '</td>';

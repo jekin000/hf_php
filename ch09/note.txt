@@ -12,6 +12,18 @@
 
 4) implode(delimiter,list)
     combine list to a string with delimiter.
+    suppose there are three keys:
+    A,B,C, we will combine them with OR
+    
+    1)if we use foreach()
+        $arrs[] = [A,B,C]
+        foreach($arrs as $arr){
+            $str += OR
+        }
+        $result = A OR B OR C OR
+        there is an additional OR
+    2) $result = implode('OR',$arrs);
+
 
 5) [] , array_push()
     the [] is equal array_push()
