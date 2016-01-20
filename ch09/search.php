@@ -32,10 +32,23 @@
   // Query to get the results
   $query = "SELECT * FROM riskyjobs WHERE ";
   $where_clause = '';
-  $user_search_words_list = explode(' ',$user_search);
+
+  $clean_search = str_replace(',',' ',$user_search);
+  $search_words = explode(' ',$clean_search);
+  $final_search_words = array();
+
+  if (count($search_words) > 0)
+    foreach ($search_words as $word){
+        if (!empty($word)){
+            $final_search_words[] = $word;
+        }
+  }
+
   $where_list = array();
-  foreach($user_search_words_list as $word){
-    $where_list[] = "description LIKE '%$word%'";
+  if (count($final_search_words) > 0){
+    foreach($final_search_words as $word){
+        $where_list[] = "description LIKE '%$word%'";
+    }
   }  
 
   $where_clause = implode(' OR ',$where_list);

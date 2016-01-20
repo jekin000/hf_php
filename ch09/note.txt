@@ -9,6 +9,16 @@
 
 3) explode(delimiter, origin string)
     split string to list
+    NOTICE:
+        let str1="a b   c"
+        $result = expolde(' ',$str1);
+        $result = [0]a
+                  [1]b
+                  [2]
+                  [3]
+                  [4]c
+        In this condition, you can use a new string,copy no empty element to
+new string.
 
 4) implode(delimiter,list)
     combine list to a string with delimiter.
@@ -31,4 +41,9 @@
     e.g.
         foreach($words as $word){
             $new_list[] = 'i am '.$word;
-        } 
+        }
+
+7) str_replace
+    str_replace(origin_str,replace_str,str)
+    e.g.
+        $search = str_replace(',',' ',$origin_search) 
