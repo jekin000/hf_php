@@ -62,9 +62,9 @@
   while ($row = mysqli_fetch_array($result)) {
     echo '<tr class="results">';
     echo '<td valign="top" width="20%">' . $row['title'] . '</td>';
-    echo '<td valign="top" width="50%">' . $row['description'] . '</td>';
+    echo '<td valign="top" width="50%">' . substr($row['description'],0,100) . '...</td>';
     echo '<td valign="top" width="10%">' . $row['state'] . '</td>';
-    echo '<td valign="top" width="20%">' . $row['date_posted'] . '</td>';
+    echo '<td valign="top" width="20%">' . substr($row['date_posted'],0,10) . '</td>';
     echo '</tr>';
   } 
   echo '</table>';

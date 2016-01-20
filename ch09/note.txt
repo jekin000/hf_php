@@ -47,3 +47,10 @@ new string.
     str_replace(origin_str,replace_str,str)
     e.g.
         $search = str_replace(',',' ',$origin_search) 
+
+8) substr(string,start,length)
+    string: How Are You
+    Index>0:0123456789A
+    Index<0:BA987654321
+    e.g.
+    substr($str,0,10)
