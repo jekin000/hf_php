@@ -62,3 +62,31 @@ new string.
 
 10) function
 
+11) LIMIT N; LIMIT M,N;
+    LIMIT M,N
+        M, skip rows;
+        N, get rows
+    e.g.
+        LIMIT 10,5
+        there are 15 rows, skip 10rows and get 5 rows
+
+12) How to display page
+    1> Compute total
+        $total = mysqli_num_rows($result)
+
+    2> result per page
+        $result_per_page = $user_input
+                            $hard_code
+                            $config_file        
+
+    3> page num
+        $num_pages = ceil($total/$result_per_page)
+
+    4> current page
+        $cur_page = $_GET['page']
+
+    5> skip page
+        $skip = ($cur_page-1)*$result_per_page
+
+    6> perform query
+        $query = $query."LIMIT $skip,$result_per_page"

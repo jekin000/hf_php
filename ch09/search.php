@@ -112,11 +112,29 @@ function generate_sort_links($user_search,$sort)
 ?>
 
 <?php
+function generate_page_links($user_search,$sort,$cur_page,$num_pages)
+{
+    $links = '';
+
+    /*Generage pre */
+    if ($cur_page > 1){
+        $links = '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search
+            .'&sort='.$sort.'&page='.($cur_page-1).'I"><- </a>';
+    }
+    else{
+        $links = '<- ';
+    }
+    return $links.'1 2 3 4 ->';
+}
+?>
+
+
+<?php
   // Grab the sort setting and search keywords from the URL using GET
   $sort = $_GET['sort'];
   $user_search = $_GET['usersearch'];
 
- // Start generating the table of results
+  // Start generating the table of results
   echo '<table border="0" cellpadding="2">';
 
   // Generate the search result headings
@@ -130,9 +148,20 @@ function generate_sort_links($user_search,$sort)
     or die("Connect DB failed.");
   
   $query = build_query($user_search,$sort);
+
   $result = mysqli_query($dbc,$query )
         or die($query);
- 
+
+  $cur_page = isset($_GET['page']) ? $_GET['page'] : 1;
+  $result_per_page = 5;
+  $skip = ($cur_page-1)*$result_per_page;
+  $total_rows = mysqli_num_rows($result);
+  $num_pages = ceil($total_rows/$result_per_page);
+
+  $query .= " LIMIT $skip,$result_per_page";
+  $result = mysqli_query($dbc,$query)
+          or die($query);
+
   while ($row = mysqli_fetch_array($result)) {
     echo '<tr class="results">';
     echo '<td valign="top" width="20%">' . $row['title'] . '</td>';
@@ -143,6 +172,9 @@ function generate_sort_links($user_search,$sort)
   } 
   echo '</table>';
 
+  if ($num_pages > 1){
+    echo generate_page_links($user_search,$sort,$cur_page,$num_pages);
+  }
   mysqli_close($dbc);
 ?>
 
