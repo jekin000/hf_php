@@ -1,1 +1,1 @@
-git commit -m 'hf_ch09 [11] add sort link to search result'
+git commit -m 'hf_ch09 [12] add sort feature to search result'

@@ -12,7 +12,7 @@
   <h3>Risky Jobs - Search Results</h3>
 
 <?php
-function build_query($user_search)
+function build_query($user_search,$sort)
 {
    // Query to get the results
   $query = "SELECT * FROM riskyjobs ";
@@ -41,8 +41,33 @@ function build_query($user_search)
   if (!empty($where_clause)){
     $query .= "WHERE $where_clause";
   }
-  return $query;
-       
+
+  $sort_clause = '';
+  if (!empty($sort)){
+    switch ($sort){
+        case 1:
+            $sort_clause .= ' ORDER BY title';
+            break;
+        case 2:
+            $sort_clause .= ' ORDER BY title DESC';
+            break;
+        case 3:
+            $sort_clause .= ' ORDER BY state';
+            break;
+        case 4:
+            $sort_clause .= ' ORDER BY state DESC';
+            break;
+        case 5:
+            $sort_clause .= ' ORDER BY date_posted';
+            break;
+        case 6:
+            $sort_clause .= ' ORDER BY date_posted DESC';
+            break;
+        default:
+            break;
+    }
+  }
+  return $query.$sort_clause;
 }
 ?>
 
@@ -104,7 +129,7 @@ function generate_sort_links($user_search,$sort)
   $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
     or die("Connect DB failed.");
   
-  $query = build_query($user_search);
+  $query = build_query($user_search,$sort);
   $result = mysqli_query($dbc,$query )
         or die($query);
  
