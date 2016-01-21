@@ -1,1 +1,1 @@
-git commit -m 'hf_ch09 [10] use function to refact search.php, build a query'
+git commit -m 'hf_ch09 [11] add sort link to search result'

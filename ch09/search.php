@@ -44,8 +44,48 @@ function build_query($user_search)
   return $query;
        
 }
+?>
+
+<?php
+function template_link($sort_num,$href_name,$user_search)
+{
+    $sort_links = '<td><a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search
+        .'&sort='.$sort_num.'">'.$href_name.'</a></td>';
+
+    return $sort_links;
+}
+
+function generate_case_sort_links($job,$state,$date_posted,$user_search)
+{
+    $sort_links = '';
+    $sort_links .= template_link($job,'Job Title',$user_search);
+    $sort_links .= '<td>Description</td>';
+    $sort_links .= template_link($state,'State',$user_search);
+    $sort_links .= template_link($date_posted,'Date Posted',$user_search);
+    return $sort_links;    
+}
+
+function generate_sort_links($user_search,$sort)
+{
+    $sort_links = '';
+    switch ($sort){
+        case 1:
+            $sort_links = generate_case_sort_links(2,3,5,$user_search);
+            break;
+        case 3:
+            $sort_links = generate_case_sort_links(1,4,5,$user_search);
+            break;
+        case 5:
+            $sort_links = generate_case_sort_links(1,3,6,$user_search);
+            break;
+        default:
+            $sort_links = generate_case_sort_links(1,3,5,$user_search);
+    }
+    return $sort_links;
+}
 
 ?>
+
 <?php
   // Grab the sort setting and search keywords from the URL using GET
   $sort = $_GET['sort'];
@@ -56,7 +96,7 @@ function build_query($user_search)
 
   // Generate the search result headings
   echo '<tr class="heading">';
-  echo '<td>Job Title</td><td>Description</td><td>State</td><td>Date Posted</td>';
+  echo generate_sort_links($user_search,$sort);
   echo '</tr>';
 
   // Connect to the database
