@@ -12,25 +12,10 @@
   <h3>Risky Jobs - Search Results</h3>
 
 <?php
-  // Grab the sort setting and search keywords from the URL using GET
-  $sort = $_GET['sort'];
-  $user_search = $_GET['usersearch'];
-
- // Start generating the table of results
-  echo '<table border="0" cellpadding="2">';
-
-  // Generate the search result headings
-  echo '<tr class="heading">';
-  echo '<td>Job Title</td><td>Description</td><td>State</td><td>Date Posted</td>';
-  echo '</tr>';
-
-  // Connect to the database
-  require_once('connectvars.php');
-  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-    or die("Connect DB failed.");
-
-  // Query to get the results
-  $query = "SELECT * FROM riskyjobs WHERE ";
+function build_query($user_search)
+{
+   // Query to get the results
+  $query = "SELECT * FROM riskyjobs ";
   $where_clause = '';
 
   $clean_search = str_replace(',',' ',$user_search);
@@ -54,11 +39,35 @@
   $where_clause = implode(' OR ',$where_list);
  
   if (!empty($where_clause)){
-    $query .= $where_clause;
-    $result = mysqli_query($dbc, $query)
-        or die($result);
+    $query .= "WHERE $where_clause";
   }
+  return $query;
+       
+}
 
+?>
+<?php
+  // Grab the sort setting and search keywords from the URL using GET
+  $sort = $_GET['sort'];
+  $user_search = $_GET['usersearch'];
+
+ // Start generating the table of results
+  echo '<table border="0" cellpadding="2">';
+
+  // Generate the search result headings
+  echo '<tr class="heading">';
+  echo '<td>Job Title</td><td>Description</td><td>State</td><td>Date Posted</td>';
+  echo '</tr>';
+
+  // Connect to the database
+  require_once('connectvars.php');
+  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+    or die("Connect DB failed.");
+  
+  $query = build_query($user_search);
+  $result = mysqli_query($dbc,$query )
+        or die($query);
+ 
   while ($row = mysqli_fetch_array($result)) {
     echo '<tr class="results">';
     echo '<td valign="top" width="20%">' . $row['title'] . '</td>';

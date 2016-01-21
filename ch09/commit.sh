@@ -1,1 +1,1 @@
-git commit -m 'hf_ch09 [9] update note.txt to add sql SUBSTRING()'
+git commit -m 'hf_ch09 [10] use function to refact search.php, build a query'

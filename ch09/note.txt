@@ -59,3 +59,6 @@ new string.
     NOTICE: begin is from 1 not 0
     SELECT SUBSTRING(job_description,1,100)
     FROM riskyjobs
+
+10) function
+
