@@ -116,15 +116,40 @@ function generate_page_links($user_search,$sort,$cur_page,$num_pages)
 {
     $links = '';
 
-    /*Generage pre */
+    /*Generate Pre Page */
     if ($cur_page > 1){
         $links = '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search
-            .'&sort='.$sort.'&page='.($cur_page-1).'I"><- </a>';
+            .'&sort='.$sort.'&page='.($cur_page-1).'"><- </a>';
     }
     else{
         $links = '<- ';
     }
-    return $links.'1 2 3 4 ->';
+
+    /*Generate Number Page */
+    for ($i=1; $i<=$num_pages; $i++){
+        if ($i == $cur_page){
+            $links .= "$i ";
+        }
+        else{
+            $links .= '<a href="'.$_SERVER['PHP_SELF']
+            .'?usersearch='.$user_search
+            .'&sort='.$sort
+            .'&page='.$i
+            .'">'.$i.' </a>';
+        }
+    }
+
+    /*Generate Next Page*/
+    if ($cur_page == $num_pages){
+        $links .= '->';
+    }
+    else{
+        $links .= '<a href="'.$_SERVER['PHP_SELF'].'?usersearch='.$user_search
+            .'&sort='.$sort
+            .'&page='.($cur_page+1)
+            .'">-></a>';
+    }
+    return $links;
 }
 ?>
 
@@ -152,6 +177,7 @@ function generate_page_links($user_search,$sort,$cur_page,$num_pages)
   $result = mysqli_query($dbc,$query )
         or die($query);
 
+  /* the page control */
   $cur_page = isset($_GET['page']) ? $_GET['page'] : 1;
   $result_per_page = 5;
   $skip = ($cur_page-1)*$result_per_page;

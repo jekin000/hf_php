@@ -90,3 +90,6 @@ new string.
 
     6> perform query
         $query = $query."LIMIT $skip,$result_per_page"
+
+    7> generate page tag
+
