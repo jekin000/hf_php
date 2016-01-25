@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo cp *.php  /var/www/html/hf_ch10/
+sudo cp registration.php  /var/www/html/hf_ch10/
