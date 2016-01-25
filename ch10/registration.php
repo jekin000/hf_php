@@ -94,7 +94,12 @@
 <?php
   }
   else if ($output_form == 'no') {
-    echo '<p>' . $first_name . ' ' . $last_name . ', thanks for registering with Risky Jobs!</p>';
+
+    $pattern = '/[\(\)\s\-]/';
+    $replacement = '';
+    $new_phone = preg_replace($pattern,$replacement,$phone);
+    echo '<p>' . $first_name . ' ' . $last_name . ', thanks for registering with Risky Jobs!<br />'
+            . 'Your phone number has been registered as '.$new_phone.' </p>';
 
     // code to insert data into the RiskyJobs database...
   }

@@ -58,4 +58,9 @@ repeated.
 
 2. preg_match($regex,$my_string)
     return 1 or 0
-    
+
+3. preg_replace($pattern,$replacement,$my_string)
+    e.g.
+    $new_year = preg_replace('/200[0-9]','2010','The year is 2009.');
+    2000~2009 replace to 2010
+ 
