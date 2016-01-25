@@ -63,4 +63,21 @@ repeated.
     e.g.
     $new_year = preg_replace('/200[0-9]','2010','The year is 2009.');
     2000~2009 replace to 2010
- 
+
+4. exec()
+
+5. checkdnsrr()
+    send dns query to dns server.
+    if your web service is on windows OS,you need these code.
+    function win_checkdnsrr($domain,$recType='')
+    {
+        if ($recType == '')
+            $rectype = "MX";
+        exec("nslookup -type=$recvType $domain",$output);
+        foreach ($output as $line){
+            if (preg_match("/^$domain/",$line)){
+                return true;
+            }   
+        }
+        return false;
+    } 

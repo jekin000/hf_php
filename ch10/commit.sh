@@ -1,1 +1,1 @@
-git commit -m "hf_ch10 [03] add preg_replace()."
+git commit -m "hf_ch10 [04] use checkdnsrr() to check email."

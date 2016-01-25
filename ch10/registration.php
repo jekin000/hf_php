@@ -38,6 +38,22 @@
       echo '<p class="error">You forgot to enter your email address.</p>';
       $output_form = 'yes';
     }
+    else if (!preg_match('/^[a-zA-Z0-9][a-zA-Z0-9\_\-&!?=#]*@/',$email)){
+        // LocalName is bad.
+        echo 'Your email address is invalid.<br />';
+        $output_form = 'yes';
+    }
+    else{
+        //strip out everything but the domain from email
+        $domain = preg_replace('/^[a-zA-Z0-9][a-zA-Z0-9\_\-&!?=#]*@/','',$email);
+
+        //check the domain
+        if (!checkdnsrr($domain)) {
+            //domain is bad.
+            echo 'Your email address is invalid.<br />';
+            $output_form = 'yes';
+        }
+    }
 
     if (!preg_match('/^\(?[2-9]\d{2}\)?[\s-]\d{3}-\d{4}$/',$phone)) {
       // $phone is blank
