@@ -1,0 +1,61 @@
+1. Reqular expressions
+    1) /^\d\d\d\d\d\d\d\d\d\d$/
+      begin                 end
+
+    2) /^\d{10}$/
+    They are the same.
+
+    -> Metacharacter(atom keyword)
+    1) \d , 0~9, 
+        e.g.
+            \d\d, or \d{2]    
+    2) \w, a~z, A~Z, 0~9
+    3) \s, space,tab,CR(Carriage Return),LF(Line Feed/newline)
+    4) ^(caret), the start of a text string
+    5) .(period), \d,\w,\s,but except LF
+    6) $, Looks for the end of a string.
+    e.g.
+        /^w{5}\s\d{3}$/
+            "Nanny 411 is greater"  ---> no
+            "Nanny 411"             ---> yes
+            "Call Nanny 411"        ---> no
+
+    -> Quantifiers(numbers)
+    1){}(curly braces)
+        {num}/{min,max}
+        times/possible times,the preceding character/metacharacter should be
+repeated.
+    2)+, one or more times;
+    3)?, once or not at all;
+    4)*, not at all ,once or more times;
+    e.g.
+    /^\d{3}-\d{3}-\d{4}(-\d{4})?$/
+
+    -> Character Class
+    []
+    e.g.
+    [0-2]
+    [A-D]
+    [^b-f],everything except b,c,d,e,f
+    [aeiou]
+    [m-zM-Z]
+    [m-z, M-z], add , and ' '
+    [aeiouAEIOU]+
+    hello+
+    (hello)+
+
+    -> |
+    e.g.
+    (a|b)  
+
+    -> \ (backslash)
+    /(forward slash),\,*,?,+,.,[],(),{},^,$
+
+    e.g.
+    555-636-4652,555 636-4652,(555)-636-4652,(555) 636-4652
+    /^\(?[2-9]\d{2}\)?[-\s]\d{3}-\d{4}$/
+
+
+2. preg_match($regex,$my_string)
+    return 1 or 0
+    
