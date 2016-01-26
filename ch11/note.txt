@@ -1,0 +1,62 @@
+0) CAPTCHA
+    Completely Automated Public Turing Test to Tell Computers and Humans
+Apart
+    Chinese pinyin: Yan ZhengMa
+
+1) rand()
+    rand from range or default [0,RAND_MAX(server dependent)]
+    e.g. rand() / rand(97,122)
+
+2) chr()
+    convert a number to its ASCII character.
+    e.g. chr(97) = 'a';
+
+3) $img = imagecreatetruecolor(width,height)
+    create a php image identifier.
+
+4) $color = imagecolorallocate($img,red,green,blue)
+    red,green,blue's value range is [0,255]
+
+5) imagesetpixel($img_identify,width,height,$color_identify)
+    upper-left corner is (0,0)
+
+6) imageline($img_identify,x1,y1,x2,y2,%color_identify)
+
+7) imagerectangle($img_identify,x1,y1,x2,y2,%color_identify)
+
+8) imagerectangle($img_identify,x1,y1,x2,y2,%color_identify)
+
+9) imageellipse($image,Center_x,Center_y,width,height,$color)
+
+10) imagefilledellipse($image,Center_x,Center_y,width,height,$color)
+
+11) imagepng()
+    output directly to client web browser OR to a file on server.
+    if you elect to generate a PNG image directly to memory,you must also call
+header()
+    e.g.
+        header("Content-type: image/png")
+        imagepng($img)
+
+12) imagedestroy($img_identify)
+    after you call imagepng()
+
+13) imagestring($img,font_size,x,y,str,$color_identify)
+    font_size = [1-5]
+    (x,y) is upper-left corner of string's rectangle
+    
+    
+14) imagestringup($img,font_size,x,y,str,$color_identify)
+    90 degree of imagestring() counterclockwise.
+    (x,y) is lower-left corner of string's rectangle
+
+15)
+imagettftext($img_identify,font_size,font_angle,x,y,%color_indentify,'Courier
+New Bold.ttf',$pass_phrase)
+    font_angle, counterclockwise, 0 is normal text.
+    x,y lower-left corner of first character
+    Courier New Bold.ttf, the server must have this ttf file
+        ttf means True Type File
+
+16) www.fontstruct.com have custom fonts
+
