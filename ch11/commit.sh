@@ -1,2 +1,2 @@
-git commit -m 'hf_ch11 [1] update PHP draw build-in function to note.txt(used by CAPTCHA)'
+git commit -m 'hf_ch11 [2] init guitarwars code.'
 
