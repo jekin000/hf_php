@@ -24,7 +24,7 @@ Apart
 
 7) imagerectangle($img_identify,x1,y1,x2,y2,%color_identify)
 
-8) imagerectangle($img_identify,x1,y1,x2,y2,%color_identify)
+8) imagefilledrectangle($img_identify,x1,y1,x2,y2,%color_identify)
 
 9) imageellipse($image,Center_x,Center_y,width,height,$color)
 

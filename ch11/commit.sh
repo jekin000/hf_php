@@ -1,2 +1,2 @@
-git commit -m 'hf_ch11 [2] init guitarwars code.'
+git commit -m 'hf_ch11 [3] add captcha & font-style(from win7) code.'
 

@@ -1,7 +1,7 @@
 <?php
   // User name and password for authentication
-  $username = 'rock';
-  $password = 'roll';
+  $username = 'root';
+  $password = 'root';
 
   if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']) ||
     ($_SERVER['PHP_AUTH_USER'] != $username) || ($_SERVER['PHP_AUTH_PW'] != $password)) {
