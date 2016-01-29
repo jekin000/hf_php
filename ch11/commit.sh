@@ -1,2 +1,2 @@
-git commit -m 'hf_ch11 [4] add captcha to addscore.php'
+git commit -m 'hf_ch11 [5] init mismatch code.'
 
