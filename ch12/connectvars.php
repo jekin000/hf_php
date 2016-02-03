@@ -1,7 +1,7 @@
 <?php
   // Define database connection constants
-  define('DB_HOST', 'data.aliensabductedme.com');
-  define('DB_USER', 'owen');
-  define('DB_PASSWORD', 'aliensrool');
-  define('DB_NAME', 'aliendatabase');
+  define('DB_HOST', 'localhost');
+  define('DB_USER', 'root');
+  define('DB_PASSWORD', 'root');
+  define('DB_NAME', 'aliens_abduction');
 ?>

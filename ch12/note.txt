@@ -1,0 +1,48 @@
+1) RSS 
+    Really Simple Syndication
+
+2) RSS feed / news feed
+    An RSS view on a particular set of data
+
+3) RSS newsreader
+    the application read RSS data.
+
+
+4) XML format
+    1) Tag that contain content must appear as matching pairs
+        <p> Hello World </p>
+        <p></p> is pairs
+
+    2) Empty tags that have no content must be coded with a SPACE
+        and a FORWARD SLASH at the end before the closing brace
+        <br />
+    
+    3) All attribute values must be enclosed in double quotes.
+        <img src="alien.gif">
+
+    4) case sensitive
+
+5) structure
+    rss
+    |--channel
+    |   |--title
+    |   |--link
+    |   |--description
+    |   |--language
+    |   |--item_1
+    |   |   |--title
+    |   |   |--link
+    |   |   |--pubDate
+    |   |   |--description
+    |   |--item_2
+    |   |--item_..
+    |   |--item_n
+     
+6) RSS feed contain image
+    it only contain in channel tag.
+    e.g.
+        <image>
+            <url>http://localhost/fang.jpg</url>
+            <title>My dog</title>  
+            <link>http://localhost</link>
+        </image>

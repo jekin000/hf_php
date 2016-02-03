@@ -23,7 +23,7 @@
     // Display each row as an RSS item
     echo '<item>';
     echo '  <title>' . $row['first_name'] . ' ' . $row['last_name'] . ' - ' . substr($row['alien_description'], 0, 32) . '...</title>';
-    echo '  <link>http://www.aliensabductedme.com/index.php?abduction_id=' . $row['abduction_id'] . '</link>';
+    echo '  <link>http://localhost/hf_ch12/index.php?abduction_id=' . $row['abduction_id'] . '</link>';
     echo '  <pubDate>' . $row['when_it_happened_rfc'] . ' ' . date('T') . '</pubDate>';
     echo '  <description>' . $row['what_they_did'] . '</description>';
     echo '</item>';

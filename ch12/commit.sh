@@ -1,2 +1,2 @@
-git commit -m 'hf_ch12 [2] init code.'
+git commit -m 'hf_ch12 [3] finish newsfeed.php .'
 
