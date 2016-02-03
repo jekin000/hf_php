@@ -1,2 +1,2 @@
-git commit -m 'hf_ch11 [7] add captcha.php to guitarwars.'
+git commit -m 'hf_ch11 [8] add final httpd.'
 
