@@ -1,2 +1,2 @@
-git commit -m 'hf_ch11 [6] commit mismatch bar graphic.'
+git commit -m 'hf_ch11 [7] add captcha.php to guitarwars.'
 
