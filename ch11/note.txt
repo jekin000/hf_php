@@ -1,5 +1,26 @@
--1) GD
+framework:
+
+-4) GD
     standard PHP graphics library
+-3) How to implement a CAPTCHA with GD;
+
+-2) How to implement a bar graphic with GD;
+
+-1) when use a script/function to output a image
+script-output-image:
+    1) The whole script must and only to draw image;
+    2) before output, you must use header();
+    3) few input parm with GET;
+    4) output the image to browser;
+
+function-output-image:
+    4) it output the image to file;
+    3) can acquire much more input param;
+    1) can implement not only in a specfic indenpandent file ,but also in
+anywhere;
+    2) no need header(), if use header() it may cause problems.
+
+note:
 
 0) CAPTCHA
     Completely Automated Public Turing Test to Tell Computers and Humans
@@ -35,7 +56,7 @@ Apart
 
 10) imagefilledellipse($image,Center_x,Center_y,width,height,$color)
 
-11) imagepng()/imagegif()/imagejpeg()/
+11) imagepng($image,$filename,$compressLevel)/imagegif()/imagejpeg()/
     output directly to client web browser OR to a file on server.
     if you elect to generate a PNG image directly to memory,you must also call
 header()
@@ -45,6 +66,7 @@ header()
 
     use imagepng() push the binary data to client browser, so the client do
 not store image to the disk.
+    $compress_level default is 5, means medium,(0 no compress, 9 max compress).
 
 12) imagedestroy($img_identify)
     after you call imagepng()
@@ -68,3 +90,12 @@ New Bold.ttf',$pass_phrase)
 
 16) www.fontstruct.com have custom fonts
 
+
+17) two-dimensional array
+    array_push($arr,array(sub_1,sub_2,...sub_n));
+
+18) Bar graphic
+
+19) png,gif or jpeg
+    png,gif are better for vector-graphic
+    jpeg are better for photorealistic graphic

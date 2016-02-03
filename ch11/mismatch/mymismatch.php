@@ -1,6 +1,7 @@
 <?php
     require_once('appvars.php');
     require_once('connectvars.php');
+    require_once('bar.php');
 ?>
 
 <?php
@@ -25,9 +26,10 @@
 
 <?php
     /* get user data*/
-    $query = "SELECT mr.response_id, mr.response,mt.name"
+    $query = "SELECT mr.response_id, mr.response,mt.name,mc.name AS category_name"
             ." FROM mismatch_response as mr"
             ." INNER JOIN mismatch_topic as mt USING(topic_id)"
+            ." INNER JOIN mismatch_category AS mc USING(category_id)"
             ." WHERE mr.user_id = " . $_SESSION['user_id']
             ." ORDER BY mr.topic_id ASC";
     $data = mysqli_query($dbc,$query)
@@ -45,6 +47,8 @@
     $mismatch_score = 0;
     $mismatch_user_id = -1;
     $mismtach_topic   = array();
+    /* for bar graph*/
+    $mismatch_cateogries = array();
 ?>
 
 <?php
@@ -84,10 +88,13 @@
             array_push($response,$row);
         }
 
+        /*add category for Bar graphic */
+        $categories = array();
         for ($i=0; $i<count($user_response); $i++){
             if ($user_response[$i]['response']+$response[$i]['response']==3){
                 $score++;
                 array_push($topics,$response[$i]['name']);
+                array_push($categories,$user_response[$i]['category_name']);
             }
         }
 
@@ -95,6 +102,24 @@
             $mismatch_score = $score;
             $mismatch_topic = array_slice($topics,0);
             $mismatch_user_id = $id;
+            /*bar graphic*/
+            $mismatch_cateogries = array_slice($categories,0);
+        }
+    }
+
+    /*bar graphic*/
+    $category_total = array();
+    array_push($category_total,array($mismatch_cateogries[0],0));
+    foreach ($mismatch_cateogries as $ctgy){
+        /* new category */
+        /* [0] is category name
+         * [1] is count  
+         */
+        if ($ctgy != $category_total[count($category_total)-1][0]){
+            array_push($category_total,array($ctgy,1));
+        }
+        else{
+            $category_total[count($category_total)-1][1]++;
         }
     }
 ?>
@@ -133,6 +158,11 @@
             foreach ($mismatch_topic as $tpc){
                 echo $tpc.'<br />';
             }
+
+            echo '<h4>Mismatched category breakdown:</h4>';
+            draw_bar_graph(480,240,$category_total,5,MM_UPLOADPATH.$_SESSION['user_id'].'_mymismatchgraph.png');
+            echo '<img src="'.MM_UPLOADPATH.$_SESSION['user_id'].'_mymismatchgraph.png" alt="Mismatch category graph"/><br />';
+
             echo '<h4>View <a href=viewprofile.php?user_id='.$mismatch_user_id.'>'.$row['first_name'].'\'s Profile</a>.</h4>';
         }
     }
