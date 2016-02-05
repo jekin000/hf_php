@@ -57,6 +57,9 @@
   }
 
   mysqli_close($dbc);
+
+  echo '<h4>Most recent abduction videos:</h4>';
+  require_once('youtube.php');
 ?>
 
 </body> 

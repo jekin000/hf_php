@@ -46,3 +46,87 @@
             <title>My dog</title>  
             <link>http://localhost</link>
         </image>
+
+7) REST request
+    used to subscribe video from video website.
+    A means of accessing information on the web purely through URLs.
+    REST allows you to make powerful data requests simple by creating a URL.
+    Such requests are often referred to as "RESTful" requests.
+
+8) simplexml_load_file() return value is SimpleXMLElement
+    e.g.
+    define('YOUTUBE_URL',
+'http://gdata.youtube.com/feeds/api/videos/-/alien/abduction/head/first'); 
+    $xml = simplexml_load_file(YOUTUBE_URL);
+
+9) XML namespace
+    <title type='text'>Favorites of alien sabductedme</title>
+<media:title type='plain'>UFO Sighting in Yosemite Park near Area 51</media:title>
+"media" is first name
+"title" is last name
+
+    to ensure uniqueness, an XML namespace is always associated with a URL.
+    e.g.
+        xmlns:media='http://search.yahoo.com/mrss/'
+        (it's a yahoo format)
+
+10) XML escape
+    & = &amp;
+    < = &lt;
+    > = &gt;
+    " = &quot;
+    ' = &apos;
+
+11) youtube xml format
+    media namespace include many video related data tag.
+    yt namespace used solely with <statistics> tag.
+    gd google format , used <comments>
+
+12) youtube XML structure
+    entry
+    |--id
+    |--published
+    |--statistics
+    |--rating
+    |--comments
+    |   |--feedlink
+    |--group
+    |   |--title
+    |   |--description
+    |   |--keywords
+    |   |--duration
+    |   |--category
+    |   |--content_1
+    |   |--content_2
+    |   |--content_...
+    |   |--content_n
+    |   |--player
+    |   |--thumbnail_1
+    |   |--thumbnail_2
+    |   |--thumbnail_...
+    |   |--thumbnail_n
+
+13) namespace can help you extract data from xml file.
+
+14) how to extract data from xml object
+    $entries = $xml->entry;
+    
+    No NameSpace:
+    echo $entry->group->title;
+    $attrs = $entry->group->duration->attributes();
+    echo $attrs['seconds'];   
+
+    NameSpace:
+    if we want to extract data from
+    <yt:duration seconds='50'/>
+
+    1. use children()
+    <feed 'xmlns:yt='http://gdata.youtube.com/schemas/2007'
+            xmlns:media='http://search.yahoo.com/mrss/'
+            xmlns:gd='http://schemas.google.com/g/2005'>
+    
+    2.$media = $entry->children('http://search.yahoo.com/mrss/');
+        $yt = $media->children('http://gdata.youtube.com/schemas/200');
+        $attr = $yt->duration->attributes();
+        $attr['seconds'];
+
